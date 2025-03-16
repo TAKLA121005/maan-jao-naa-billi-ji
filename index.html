@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mujhe maaf kardoi billi ji 😭 ?</title>
+    <title>mujhe maaf kardo billi ji 😭 ?</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -19,7 +19,26 @@
                 transform: translateY(100vh);
             }
         }
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
 
+        #music-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
         .sticker {
             animation: bounce 2s infinite;
             width: 300px; /* Adjust the size as needed */
@@ -52,7 +71,7 @@
     <div class="text-center z-10 bg-white/40 backdrop-blur-sm p-12 rounded-3xl shadow-xl border-2 border-pink-200">
         <!-- Proposal Text -->
         <h1 class="text-5xl font-bold text-pink-400 mb-8 cute-shadow animate-pulse">
-            mujhe maaf kardoi billi ji 😭 ?
+            mujhe maaf kardo billi ji 😭 ?
         </h1>
         
         <!-- Sticker -->
@@ -135,6 +154,95 @@
             }
         });
     });
+    </script>
+   </head>
+   <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0; /* Light background color */
+        margin: 0;
+    }
+    #play-button {
+        background-color: pink; /* Button color */
+        color: white; /* Text color */
+        border: none; /* No border */
+        border-radius: 25px; /* Rounded corners */
+        padding: 15px 30px; /* Padding */
+        font-size: 20px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        display: flex; /* Flexbox for alignment */
+        align-items: center; /* Center items vertically */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+    #play-button:hover {
+        background-color: #ff69b4; /* Darker pink on hover */
+    }
+    .heart {
+        margin-right: 10px; /* Space between heart and text */
+    }
+</style>
+</head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Music</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* Light background color */
+            margin: 0;
+        }
+        #play-button {
+            background-color: pink; /* Button color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 25px; /* Rounded corners */
+            padding: 15px 30px; /* Padding */
+            font-size: 20px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        #play-button:hover {
+            background-color: #ff69b4; /* Darker pink on hover */
+        }
+        .heart {
+            margin-right: 10px; /* Space between heart and text */
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="love-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="play-button">
+        <span class="heart">❤️</span> Play Song
+    </button>
+
+    <script>
+        const audio = document.getElementById('background-music');
+        const playButton = document.getElementById('play-button');
+
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playButton.textContent = 'Pause Song'; // Change button text to "Pause"
+                }).catch(error => {
+                    console.error('Error playing audio:', error);
+                });
+            } else {
+                audio.pause();
+                playButton.textContent = 'Play Song'; // Change button text back to "Play"
+            }
+        });
     </script>
 </body>
 </html>
